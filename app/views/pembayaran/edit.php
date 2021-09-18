@@ -15,7 +15,7 @@
         <tr>
             <td>NISN</td>
             <td>
-                <input type="text" name="inputNisn" value="<?= $data['pembayaran']['nisn']?>" disabled>
+                <input type="number" name="inputNisn" value="<?= $data['pembayaran']['nisn']?>">
             </td>
         </tr>
         <tr>

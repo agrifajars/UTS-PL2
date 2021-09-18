@@ -61,10 +61,10 @@ class PembayaranModel
         $month = date('m', $timestamp);
         $year = date('Y', $timestamp);
 
-        $this->db->query('UPDATE ' . $this->table . ' SET id_petugas = :id_petugas, nisn = :nisn, tgl_bayar = :tgl_bayar, bulan_bayar = :bulan bayar, tahun_bayar = :tahun_bayar, id_spp = :id_spp, jumlah_bayar = :jumlah_bayar WHERE id_pembayaran = :id_pembayaran');
+        $this->db->query('UPDATE ' . $this->table . ' SET id_petugas = :id_petugas, nisn = :nisn, tgl_bayar = :tgl_bayar, bulan_bayar = :bulan_bayar, tahun_bayar = :tahun_bayar, id_spp = :id_spp, jumlah_bayar = :jumlah_bayar WHERE id_pembayaran = :id_pembayaran');
         $this->db->bind('id_pembayaran', $data['id_pembayaran']);
         $this->db->bind('id_petugas', $data['id_petugas']);
-        $this->db->bind('nisn', $data['inputNisn'] );
+        $this->db->bind('nisn', $data['inputNisn']);
         $this->db->bind('tgl_bayar', $date);
         $this->db->bind('bulan_bayar', $month);
         $this->db->bind('tahun_bayar', $year);
