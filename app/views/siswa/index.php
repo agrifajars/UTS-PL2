@@ -25,8 +25,8 @@
         <td><?= $siswa['no_telp'] ?></td>
         <td><?= $siswa['id_spp'] ?></td>
         <td>
-            <a href="#" data-idsiswa="<?= $siswa['id_siswa'] ?>">Ubah</a> |
-            <a href="<?= BASEURL . 'SiswaController/hapus/' . $siswa['id_siswa'] ?>" onclick="return confirm('Anda yakin menghapus data ini?')">Hapus</a>
+            <a href="<?= BASEURL . 'SiswaController/edit/' . base64_encode($siswa['nisn']) ?>">Ubah</a> |
+            <a href="<?= BASEURL . 'SiswaController/hapus/' . base64_encode($siswa['nisn']) ?>" onclick="return confirm('Anda yakin menghapus data ini?')">Hapus</a>
         </td>
     </tr>
     <?php } ?>

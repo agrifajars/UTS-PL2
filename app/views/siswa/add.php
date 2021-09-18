@@ -5,7 +5,7 @@
 <form action="<?= BASEURL; ?>SiswaController/tambah" method="POST">
     <table>
         <tr>
-            <td>NSIN</td>
+            <td>NISN</td>
             <td>
                 <input type="number"  name="inputNisn" required>
             </td>

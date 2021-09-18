@@ -39,13 +39,9 @@ class SppController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('SppModel')->tambahDataSpp($_POST) > 0) {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            }
+            $this->model('SppModel')->tambahDataSpp($_POST);
+            header('Location: ' . BASEURL . 'SppController');
+            exit;
         }
     }
 
@@ -54,13 +50,9 @@ class SppController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('SppModel')->ubahDataSpp($_POST) > 0) {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            }
+            $this->model('SppModel')->ubahDataSpp($_POST);
+            header('Location: ' . BASEURL . 'SppController');
+            exit;
         }
     }
 
@@ -69,13 +61,9 @@ class SppController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('SppModel')->hapusDataSpp(base64_decode($id_spp)) > 0) {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'SppController');
-                exit;
-            }
+            $this->model('SppModel')->hapusDataSpp(base64_decode($id_spp));
+            header('Location: ' . BASEURL . 'SppController');
+            exit;
         }
     }
 }

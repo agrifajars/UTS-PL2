@@ -27,14 +27,19 @@ class PembayaranModel
 
     public function tambahPembayaran($data)
     {
-        $this->db->query("INSERT INTO pembayaran VALUES ('', :id_petugas, :nisn, :tgl_bayar, :bulan_bayar, :tahun_bayar, :id_spp, :jumlah_bayar)");
+        $timestamp = strtotime($data['inputTanggal']); 
+        $date = date('d', $timestamp);
+        $month = date('m', $timestamp);
+        $year = date('Y', $timestamp);
+
+        $this->db->query("INSERT INTO " . $this->table . " VALUES ('', :id_petugas, :nisn, :tgl_bayar, :bulan_bayar, :tahun_bayar, :id_spp, :jumlah_bayar)");
         $this->db->bind('id_petugas', $data['id_petugas']);
-        $this->db->bind('nisn', $data['nisn']);
-        $this->db->bind('tgl_bayar', $data['tgl_bayar']);
-        $this->db->bind('bulan_bayar', $data['bulan_bayar']);
-        $this->db->bind('tahun_bayar', $data['tahun_bayar']);
-        $this->db->bind('id_spp', $data['id_spp']);
-        $this->db->bind('jumlah_bayar', $data['jumlah_bayar']);
+        $this->db->bind('nisn', $data['selectedNisn']);
+        $this->db->bind('tgl_bayar', $date);
+        $this->db->bind('bulan_bayar', $month);
+        $this->db->bind('tahun_bayar', $year);
+        $this->db->bind('id_spp', $data['selectedSpp']);
+        $this->db->bind('jumlah_bayar', $data['inputNominal']);
         $this->db->execute();
 
         return $this->db->rowCount();
@@ -42,7 +47,7 @@ class PembayaranModel
 
     public function hapusPembayaran($id_pembayaran)
     {
-        $this->db->query('DELETE FROM pembayaran WHERE id_pembayaran = :id_pembayaran');
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id_pembayaran = :id_pembayaran');
         $this->db->bind('id_pembayaran', $id_pembayaran);
         $this->db->execute();
 
@@ -51,15 +56,20 @@ class PembayaranModel
 
     public function ubahPembayaran($data)
     {
-        $this->db->query('UPDATE pembayaran SET id_petugas = :id_petugas, nisn = :nisn, tgl_bayar = :tgl_bayar, bulan_bayar = :bulan bayar, tahun_bayar = :tahun_bayar, id_spp = :id_spp, jumlah_bayar = :jumlah_bayar WHERE id_pembayaran = :id_pembayaran');
+        $timestamp = strtotime($data['inputTanggal']); 
+        $date = date('d', $timestamp);
+        $month = date('m', $timestamp);
+        $year = date('Y', $timestamp);
+
+        $this->db->query('UPDATE ' . $this->table . ' SET id_petugas = :id_petugas, nisn = :nisn, tgl_bayar = :tgl_bayar, bulan_bayar = :bulan bayar, tahun_bayar = :tahun_bayar, id_spp = :id_spp, jumlah_bayar = :jumlah_bayar WHERE id_pembayaran = :id_pembayaran');
         $this->db->bind('id_pembayaran', $data['id_pembayaran']);
         $this->db->bind('id_petugas', $data['id_petugas']);
-        $this->db->bind('nisn', $data['nisn']);
-        $this->db->bind('tgl_bayar', $data['tgl_bayar']);
-        $this->db->bind('bulan_bayar', $data['bulan_bayar']);
-        $this->db->bind('tahun_bayar', $data['tahun_bayar']);
-        $this->db->bind('id_spp', $data['id_spp']);
-        $this->db->bind('jumlah_bayar', $data['jumlah_bayar']);
+        $this->db->bind('nisn', $data['inputNisn'] );
+        $this->db->bind('tgl_bayar', $date);
+        $this->db->bind('bulan_bayar', $month);
+        $this->db->bind('tahun_bayar', $year);
+        $this->db->bind('id_spp', $data['selectedSpp']);
+        $this->db->bind('jumlah_bayar', $data['inputNominal']);
         $this->db->execute();
 
         return $this->db->rowCount();

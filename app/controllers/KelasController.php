@@ -40,13 +40,9 @@ class KelasController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('KelasModel')->tambahKelas($_POST)) {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            }
+            $this->model('KelasModel')->tambahKelas($_POST);
+            header('Location: ' . BASEURL . 'KelasController');
+            exit;
         }
     }
 
@@ -55,13 +51,9 @@ class KelasController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('KelasModel')->hapusKelas(base64_decode($id_kelas)) > 0) {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            }
+            $this->model('KelasModel')->hapusKelas(base64_decode($id_kelas));
+            header('Location: ' . BASEURL . 'KelasController');
+            exit;
         }
     }
 
@@ -70,13 +62,9 @@ class KelasController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('KelasModel')->ubahKelas($_POST) > 0) {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'KelasController');
-                exit;
-            }
+            $this->model('KelasModel')->ubahKelas($_POST);
+            header('Location: ' . BASEURL . 'KelasController');
+            exit;
         }
     }
 }

@@ -65,13 +65,9 @@ class PetugasController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('PetugasModel')->hapusDataPetugas(base64_decode($id_petugas)) > 0) {
-                header('Location: ' . BASEURL . 'PetugasController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'PetugasController');
-                exit;
-            }
+            $this->model('PetugasModel')->hapusDataPetugas(base64_decode($id_petugas));
+            header('Location: ' . BASEURL . 'PetugasController');
+            exit;
         }
     }
 
@@ -80,13 +76,9 @@ class PetugasController extends Controller
         if (!isset($_SESSION['is_login'])) {
             header('Location: ' . BASEURL);
         } else {
-            if ($this->model('PetugasModel')->ubahDataPetugas($_POST) > 0) {
-                header('Location: ' . BASEURL . 'PetugasController');
-                exit;
-            } else {
-                header('Location: ' . BASEURL . 'PetugasController');
-                exit;
-            }
+            $this->model('PetugasModel')->ubahDataPetugas($_POST);
+            header('Location: ' . BASEURL . 'PetugasController');
+            exit;
         }
     }
 }
